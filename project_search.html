@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        body {
+            background-color: lightpink;
+        }
+
+        fieldset {
+            width: 500px;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div align="center">
+            <fieldset>
+                <legend>아이디 찾기</legend>
+                <table>
+                    <tr>
+                        <td>이름 : </td>
+                        <td><input type="text" name="name" /></td>
+                    </tr>
+                    <tr>
+                        <td>휴대폰 번호Phone : </td>
+                        <td><input type="tel" name="phone" /></td>
+                    </tr>
+                    <tr>
+                        <td>이메일 :  </td>
+                        <td><input type="email" name="email" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="확인" /></td>
+                    </tr>
+                </table>
+            </fieldset><br /><br />
+            <fieldset>
+                <legend>비밀번호 찾기</legend>
+                <table>
+                    <tr>
+                        <td>아이디 : </td>
+                        <td><input type="text" name="id" /></td>
+                    </tr>
+                    <tr>
+                        <td>이름 : </td>
+                        <td><input type="text" name="name" /></td>
+                    </tr>
+                    <tr>
+                        <td>이메일 : </td>
+                        <td><input type="email" name="email" /></td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호 힌트 : </td>
+                        <td>
+                            <select name="passwordhint">
+                                <option value="school">자신이 나온 고등학교 이름은?</option>
+                                <option value="daddy">아버지 성함은?</option>
+                                <option value="mommy">어머니 성함은?</option>
+                                <option value="pet">애완동물 종류는?</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="text" name="hint" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="button" value="확인" /></td>
+                    </tr>
+                </table>
+            </fieldset>
+        </div>
+    </form>
+</body>
+</html>
