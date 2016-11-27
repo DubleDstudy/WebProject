@@ -1,0 +1,119 @@
+﻿
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>?먮컮?ㅽ겕由쏀듃 ?щ젰留뚮뱾湲?/title>
+</head>
+<body onload="showmethe()">
+    <input type="hidden" id="year">
+    <input type="hidden" id="month">
+    <div id="show"></div>
+
+    <script>
+ var today = new Date();           // ?ㅻ뒛嫄?諛쏆븘?⑤럩
+ var year = today.getFullYear();   // ?꾨룄
+ var month = today.getMonth();     // ??
+
+ document.getElementById("year").value = year;  // ????앹쓣 ?뗮똿?댁??? ( ??移쒓뎄?ㅼ씠 ?щ젰???꾨룄? ???뺣낫瑜??대뒗 蹂???뺣룄濡??앷컖 ?섎㈃ ??~ )
+ document.getElementById("month").value = month+1; // ????앹쓣 ?뗮똿?댁???
+
+ function prev() { // ?꾨떖
+  var yy = document.getElementById("year").value;
+  var mm = document.getElementById("month").value;
+  mm--;
+  if(mm <= 0){
+   mm = 12;
+   yy--;
+  }
+  document.getElementById("year").value = yy;
+     document.getElementById("month").value = mm;
+     showmethe();
+ }
+
+ function next() { // ?ㅼ쓬??
+  var yy = document.getElementById("year").value;
+  var mm = document.getElementById("month").value;
+  mm++;
+  if(mm > 12){
+   mm = 1;
+   yy++;
+  }
+  document.getElementById("year").value = yy;
+     document.getElementById("month").value = mm;
+     showmethe();
+
+ }
+ function show_right(date) {
+     var anni = parent.anniversary;
+     var app = parent.appointment;
+     var study = parent.study;
+     var diary = parent.diary;
+     var money = parent.money;
+     anni.location = "anni.jsp";
+     app.location = "appo.jsp";
+     study.location = "study.jsp";
+     diary.location = "diary.jsp";
+     money.location = "money.jsp";
+ }
+
+ function showmethe(){ // ??濡쒕뱶?섍퀬 諛붾줈 ?쒖옉?섎뒗 ?⑥닔
+  var yy = document.getElementById("year").value;  // ?꾨룄? ?ъ쓣 遺덈윭?⑤떎
+  var mm = document.getElementById("month").value;
+  var show = document.getElementById("show"); // ?섏쨷??異쒕젰??怨?div?쒓렇
+
+  var sum = "<table height='500px' border='1px' align='center' width='700px'>";
+   sum += "<tr>";
+   sum += "<td colspan='7' align='center'>";
+   sum += "<a href='#' onclick='prev()'><<</a>&nbsp;&nbsp;&nbsp;";
+   sum += yy + "??"+mm + "??;
+   sum += "&nbsp;&nbsp;&nbsp;<a href='#' onclick='next()'>>></a>";
+   sum += "</td>";
+   sum += "</tr>";
+   sum += "<tr>";
+   sum += "<th>??/th><th>??/th><th>??/th><th>??/th><th>紐?/th><th>湲?/th><th>??/th>";
+   sum += "</tr>";
+
+   sum += "<tr>";
+
+   var w = new Date(yy,mm-1,1).getDay(); // ?대쾲??1?쇱씠 臾댁뒯?붿씪?몄? 蹂닿굅 ?쇱슂??0)~?좎슂??0) 源뚯? ?뚯븘??怨듬갚??梨꾩썙以??
+   for( var i = 0 ; i < w ; i++){
+    sum += "<td>&nbsp;</td>"
+   }
+
+   var m = [31,28,31,30,31,30,31,31,30,31,30,31]; // ?붿쓽 留덉?留??좎쭨瑜?諛곗뿴???ｋ뒗??
+   m[1] = (yy%400==0 || yy%4==0 && yy%100!=0) ? 29 : 28;
+
+   var circle = "<font color='red' size='1'>??/font><font color='yellow' size='1'>??/font>" +
+            "<font color='green' size='1'>??/font><font color='lightblue' size='1'>??/font>" +
+            "<font color='gray' size='1'>??/font><br/>"
+   for (i = 1 ; i <= m[mm - 1]; i++) {    // ?붾쭏吏留됰떖 諛곗뿴 以??대쾲??爰?鍮쇱꽌 ?붿씪??留욊쾶 ?뚯븘???ｌ쓬 ... !!!
+    if( new Date(yy,mm-1,i).getDay() == 0){
+        sum += "<td align='center' style='color:red;' onclick='show_right(" + i + ")'>" + circle + i + "</td>";
+    }else if(new Date(yy,mm-1,i).getDay() == 6){
+        sum += "<td align='center' style='color:blue;' onclick='show_right(" + i + ")'>" + circle + i + "</td>";
+    }else{
+        sum += "<td align='center' onclick='show_right(" + i + ")'>" + circle + i + "</td>";
+    }
+    if(new Date(yy,mm-1,i).getDay() == 6){  // ?좎슂?쇱씠硫???諛붽퓭二쇨퀬
+     sum += "</tr>";
+     if(i != m[mm-1]){ // ?щ쭏吏留됯낵 i 媛믪쓣 鍮꾧탳?섏뿬 媛숈? ?딅떎硫??덈줈???됱쓣 ?쒖옉?쒕떎.
+      sum += "<tr>"
+     }
+    }
+   }
+   w = new Date(yy,mm,1).getDay(); // ?ㅼ쓬??1?쇱쓽 ?붿씪 ?뺣낫瑜?李얠븘?⑤떎
+   if(w != 0){
+    for(var i = w ; i <= 6 ; i++){ // ?ㅼ쓬??1?쇱씠 ?쒖옉?섎뒗 ?붿씪 遺???좎슂?쇨퉴吏 ?뚯씠釉붿뿉 鍮덉뭏???ｌ뼱以??
+     sum += "<td>&nbsp;</td>";
+    }
+   }
+   sum += "</tr>"
+
+
+   sum += "</table>";
+
+  show.innerHTML = sum;
+ }
+    </script>
+</body>
+</html>

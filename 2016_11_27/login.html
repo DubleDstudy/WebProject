@@ -1,0 +1,50 @@
+﻿<html>
+<meta charset="utf-8">
+<head>
+    <meta charset="utf-8" />
+    <style>
+        #table1 {
+                    position:absolute;
+                    top:50%;
+                    left:40%;
+        }
+    </style>
+    <script>
+	function search() {
+		window.location = "project_search.jsp";
+	}
+	function join() {
+		window.location = "project_join.jsp";
+	}
+    </script>
+    <title>login</title>
+</head>
+<body>
+    
+    <table border="0"  valign='middle' align="center" id="table1"  > 
+        <tr>    
+	    <form method="post" action="LoginChecker.jsp">
+            <td>아이디</td>
+	    <td><input type="text" name="ID" /></td>
+	    <td></td>
+        </tr>
+        <tr>
+            <td>비밀번호</td> 
+	    <td><input type="password" name="PASSWORD" /> </td>
+	    <td></td>
+        </tr>
+        <tr>
+	    <td>    
+                <input type="submit" value="로그인" />    
+            </td>
+	    </form>
+            <td>
+                <button onclick='search()'>아이디/비밀번호 찾기</button>
+            </td>
+	    <td>
+                 <button onclick='join()'>회원 가입</button>
+	    </td>
+        </tr>
+    </table>
+</body>
+</html>
