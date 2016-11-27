@@ -1,0 +1,9 @@
+1. connection pool (DBCP tomcat singleton 외부 주입)
+2. MVC (관심사 분리)
+3. framework?
+4. 코드 형상 관리
+5. 데이터베이스 관리
+6. 배포란?
+7. devops
+8. logger 사용
+
